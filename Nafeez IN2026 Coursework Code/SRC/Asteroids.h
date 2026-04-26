@@ -9,6 +9,7 @@
 #include "ScoreKeeper.h"
 #include "Player.h"
 #include "IPlayerListener.h"
+#include <vector>
 
 class GameObject;
 class Spaceship;
@@ -17,7 +18,7 @@ class GUILabel;
 class Asteroids : public GameSession, public IKeyboardListener, public IGameWorldListener, public IScoreListener, public IPlayerListener
 {
 public:
-	Asteroids(int argc, char *argv[]);
+	Asteroids(int argc, char* argv[]);
 	virtual ~Asteroids(void);
 
 	virtual void Start(void);
@@ -56,14 +57,37 @@ private:
 	uint mLevel;
 	uint mAsteroidCount;
 
+	//scorething
+	int mCurrentScore = 0;
+
+	//power-Up Variables
+	bool teleportSelected = false;
+	bool InvulnerabilitySelected = false;
+		
+	std::vector<shared_ptr<GUILabel>> mLeaderboardRows;
+
+	int mSelectedIndex = 0;
+	int mScrollOffset = 0;
+
 	//void ResetSpaceship();
 	shared_ptr<GameObject> CreateSpaceship();
+	void saveScore(const std::string& name, int score);
+	void loadLeaderboard();
+	void updateLeaderboard();
+	void showLeaderboard();
 	void CreateGUI();
 	void destoryMenu();
 	void setMenuVis();
 	void setMenuInvis();
 	void setGuideVis();
 	void setGuideInvis();
+	void setPowerVis();
+	void setPowerInvis();
+	shared_ptr<GUILabel> mPowerTitle;
+	shared_ptr<GUILabel> mPowerTxt1;
+	shared_ptr<GUILabel> mPowerTxt2;
+	shared_ptr<GUILabel> mPowerTxt3;
+	shared_ptr<GUILabel> mLeaderboardLabel;
 	shared_ptr<GUILabel> mGuideTxt1;
 	shared_ptr<GUILabel> mGuideTxt2;
 	shared_ptr<GUILabel> mGuideTxt3;
@@ -81,7 +105,7 @@ private:
 	shared_ptr<GUILabel> mQuitLabel;
 	void CreateAsteroids(const uint num_asteroids);
 	shared_ptr<GameObject> CreateExplosion();
-	
+
 	const static uint SHOW_GAME_OVER = 0;
 	const static uint START_NEXT_LEVEL = 1;
 	const static uint CREATE_NEW_PLAYER = 2;
@@ -96,10 +120,21 @@ private:
 		GMENU,
 		LBMENU,
 		PUMENU,
-		GAME_OVER,
+		GAME_OVER,//This is the state for entering name for game over screen
 	};
 
 	GameState mState = GameState::MENU;
+
+	//Player input name upon death
+	std::string mPlayerNameInput;
+	shared_ptr<GUILabel> mNameInputLabel;
+
+	struct ScoreEntry {
+		std::string name;
+		int score;
+	};
+
+	std::vector<ScoreEntry> mLeaderBoard;
 };
 
 #endif
