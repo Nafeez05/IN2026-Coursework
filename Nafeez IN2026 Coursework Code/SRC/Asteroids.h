@@ -88,6 +88,7 @@ private:
 	shared_ptr<GUILabel> mPowerTxt2;
 	shared_ptr<GUILabel> mPowerTxt3;
 	shared_ptr<GUILabel> mLeaderboardLabel;
+	shared_ptr<GUILabel> mUPandDOWN;
 	shared_ptr<GUILabel> mGuideTxt1;
 	shared_ptr<GUILabel> mGuideTxt2;
 	shared_ptr<GUILabel> mGuideTxt3;

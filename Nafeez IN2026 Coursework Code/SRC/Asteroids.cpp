@@ -104,6 +104,7 @@ void Asteroids::OnKeyPressed(uchar key, int x, int y)
 			mBackLabel->SetVisible(true);
 			setMenuInvis();
 			mLeaderboardLabel->SetVisible(true);
+			mUPandDOWN->SetVisible(true);
 			mSelectedIndex = 0;
 			mScrollOffset = 0;
 			showLeaderboard();
@@ -139,6 +140,7 @@ void Asteroids::OnKeyPressed(uchar key, int x, int y)
 		if (key == '0') {
 			mState = GameState::MENU;
 			mLeaderboardLabel->SetVisible(false);
+			mUPandDOWN->SetVisible(false);
 			setMenuVis();
 			mBackLabel->SetVisible(false);
 			for (int i = 0; i < 10; i++) {
@@ -388,6 +390,8 @@ void Asteroids::CreateGUI()
 
 	mLeaderboardLabel = make_shared <GUILabel>("Leader Board:");
 	mLeaderboardLabel->SetVisible(false);
+	mUPandDOWN = make_shared <GUILabel>("Use the UP & DOWN arrows to scroll...");
+	mUPandDOWN->SetVisible(false);
 
 	for (int i = 0; i < 10; i++) {
 		auto row = make_shared<GUILabel>("");
@@ -434,7 +438,8 @@ void Asteroids::CreateGUI()
 	container->AddComponent(static_pointer_cast<GUIComponent>(mGuideTxt6), GLVector2f(0.02f, 0.5f));
 	container->AddComponent(static_pointer_cast<GUIComponent>(mGuideTxt7), GLVector2f(0.02f, 0.45f));
 	container->AddComponent(static_pointer_cast<GUIComponent>(mGuideTxt8), GLVector2f(0.02f, 0.4f));
-
+	
+	container->AddComponent(static_pointer_cast<GUIComponent>(mUPandDOWN), GLVector2f(0.035f, 0.25f));
 	container->AddComponent(static_pointer_cast<GUIComponent>(mLeaderboardLabel), GLVector2f(0.035f, 0.85f));
 	container->AddComponent(static_pointer_cast<GUIComponent>(mNameInputLabel), GLVector2f(0.5f, 0.6f));
 
