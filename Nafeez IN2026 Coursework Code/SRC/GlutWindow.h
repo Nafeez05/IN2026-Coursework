@@ -35,7 +35,6 @@ public:
 	void AddKeyboardListener(shared_ptr<IKeyboardListener> lptr) { mKeyboardListeners.push_back(lptr); }
 	void RemoveKeyboardListener(shared_ptr<IKeyboardListener> lptr) { mKeyboardListeners.remove(lptr); }
 
-	void AddMouseListener(shared_ptr<IMouseListener> lptr) { mMouseListeners.push_back(lptr); }
 	void RemoveMouseListener(shared_ptr<IMouseListener> lptr) { mMouseListeners.remove(lptr); }
 
 	void AddWindowListener(shared_ptr<IWindowListener> lptr) { mWindowListeners.push_back(lptr); }

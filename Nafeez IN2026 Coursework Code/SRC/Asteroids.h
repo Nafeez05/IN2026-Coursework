@@ -25,7 +25,6 @@ public:
 	virtual void Stop(void);
 
 	// Declaration of IKeyboardListener interface ////////////////////////////////
-
 	void OnKeyPressed(uchar key, int x, int y);
 	void OnKeyReleased(uchar key, int x, int y);
 	void OnSpecialKeyPressed(int key, int x, int y);
@@ -61,15 +60,18 @@ private:
 	int mCurrentScore = 0;
 
 	//power-Up Variables
-	bool teleportSelected = false;
+	bool enhancedThrusterEnabled = false;
 	bool InvulnerabilitySelected = false;
+	int addedLives = 0;
+	float mouseX;
+	float mouseY;
 		
 	std::vector<shared_ptr<GUILabel>> mLeaderboardRows;
 
 	int mSelectedIndex = 0;
 	int mScrollOffset = 0;
 
-	//void ResetSpaceship();
+	void ResetSpaceship();
 	shared_ptr<GameObject> CreateSpaceship();
 	void saveScore(const std::string& name, int score);
 	void loadLeaderboard();
@@ -113,6 +115,8 @@ private:
 
 	ScoreKeeper mScoreKeeper;
 	Player mPlayer;
+
+	const static uint END_INVULNERABLE = 3;//timer for Invulenrability
 
 	//State Machine to determine the state of the game.
 	enum class GameState {

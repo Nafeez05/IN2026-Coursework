@@ -1,12 +1,18 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\adgz429\\OneDrive - City St George\u0027s, University of London\\Desktop\\Nafeez IN2026 Coursework Code - ExtraLife\\VC\\Asteroids\\",
+  "WorkspaceRootPath": "C:\\Users\\adgz429\\OneDrive - City St George\u0027s, University of London\\Desktop\\Nafeez IN2026 Coursework Code - POWERS!\\VC\\Asteroids\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{97AF88B3-4E3C-43B5-8770-C655BCAAB734}|Asteroids.vcxproj|C:\\Users\\adgz429\\OneDrive - City St George\u0027s, University of London\\Desktop\\Nafeez IN2026 Coursework Code - ExtraLife\\src\\Asteroids.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\adgz429\\OneDrive - City St George\u0027s, University of London\\Desktop\\Nafeez IN2026 Coursework Code - Invulnerability\\SRC\\Asteroids.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{97AF88B3-4E3C-43B5-8770-C655BCAAB734}|Asteroids.vcxproj|C:\\Users\\adgz429\\OneDrive - City St George\u0027s, University of London\\Desktop\\Nafeez IN2026 Coursework Code - ExtraLife\\src\\Asteroids.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\adgz429\\OneDrive - City St George\u0027s, University of London\\Desktop\\Nafeez IN2026 Coursework Code - Invulnerability\\SRC\\Spaceship.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\adgz429\\OneDrive - City St George\u0027s, University of London\\Desktop\\Nafeez IN2026 Coursework Code - Invulnerability\\SRC\\Spaceship.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\adgz429\\OneDrive - City St George\u0027s, University of London\\Desktop\\Nafeez IN2026 Coursework Code - Invulnerability\\SRC\\Asteroids.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     }
   ],
   "DocumentGroupContainers": [
@@ -16,33 +22,56 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 2,
           "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Spaceship.cpp",
+              "DocumentMoniker": "C:\\Users\\adgz429\\OneDrive - City St George\u0027s, University of London\\Desktop\\Nafeez IN2026 Coursework Code - Invulnerability\\SRC\\Spaceship.cpp",
+              "RelativeDocumentMoniker": "..\\..\\..\\Nafeez IN2026 Coursework Code - Invulnerability\\SRC\\Spaceship.cpp",
+              "ToolTip": "C:\\Users\\adgz429\\OneDrive - City St George\u0027s, University of London\\Desktop\\Nafeez IN2026 Coursework Code - Invulnerability\\SRC\\Spaceship.cpp",
+              "RelativeToolTip": "..\\..\\..\\Nafeez IN2026 Coursework Code - Invulnerability\\SRC\\Spaceship.cpp",
+              "ViewState": "AgIAAA8AAAAAAAAAAAAAACUAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2026-04-26T14:39:59.683Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Spaceship.h",
+              "DocumentMoniker": "C:\\Users\\adgz429\\OneDrive - City St George\u0027s, University of London\\Desktop\\Nafeez IN2026 Coursework Code - Invulnerability\\SRC\\Spaceship.h",
+              "RelativeDocumentMoniker": "..\\..\\..\\Nafeez IN2026 Coursework Code - Invulnerability\\SRC\\Spaceship.h",
+              "ToolTip": "C:\\Users\\adgz429\\OneDrive - City St George\u0027s, University of London\\Desktop\\Nafeez IN2026 Coursework Code - Invulnerability\\SRC\\Spaceship.h",
+              "RelativeToolTip": "..\\..\\..\\Nafeez IN2026 Coursework Code - Invulnerability\\SRC\\Spaceship.h",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAACcAAAAgAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2026-04-26T14:39:33.91Z"
+            },
             {
               "$type": "Document",
               "DocumentIndex": 0,
               "Title": "Asteroids.cpp",
-              "DocumentMoniker": "C:\\Users\\adgz429\\OneDrive - City St George\u0027s, University of London\\Desktop\\Nafeez IN2026 Coursework Code - ExtraLife\\SRC\\Asteroids.cpp",
-              "RelativeDocumentMoniker": "..\\..\\SRC\\Asteroids.cpp",
-              "ToolTip": "C:\\Users\\adgz429\\OneDrive - City St George\u0027s, University of London\\Desktop\\Nafeez IN2026 Coursework Code - ExtraLife\\SRC\\Asteroids.cpp",
-              "RelativeToolTip": "..\\..\\SRC\\Asteroids.cpp",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAWAAAAAAAAAA==",
+              "DocumentMoniker": "C:\\Users\\adgz429\\OneDrive - City St George\u0027s, University of London\\Desktop\\Nafeez IN2026 Coursework Code - Invulnerability\\SRC\\Asteroids.cpp",
+              "RelativeDocumentMoniker": "..\\..\\..\\Nafeez IN2026 Coursework Code - Invulnerability\\SRC\\Asteroids.cpp",
+              "ToolTip": "C:\\Users\\adgz429\\OneDrive - City St George\u0027s, University of London\\Desktop\\Nafeez IN2026 Coursework Code - Invulnerability\\SRC\\Asteroids.cpp",
+              "RelativeToolTip": "..\\..\\..\\Nafeez IN2026 Coursework Code - Invulnerability\\SRC\\Asteroids.cpp",
+              "ViewState": "AgIAAOcAAAAAAAAAAAAAAPwAAAA8AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2026-04-26T07:54:44.432Z",
+              "WhenOpened": "2026-04-26T12:33:08.47Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 3,
               "Title": "Asteroids.h",
-              "DocumentMoniker": "C:\\Users\\adgz429\\OneDrive - City St George\u0027s, University of London\\Desktop\\Nafeez IN2026 Coursework Code - ExtraLife\\SRC\\Asteroids.h",
-              "RelativeDocumentMoniker": "..\\..\\SRC\\Asteroids.h",
-              "ToolTip": "C:\\Users\\adgz429\\OneDrive - City St George\u0027s, University of London\\Desktop\\Nafeez IN2026 Coursework Code - ExtraLife\\SRC\\Asteroids.h",
-              "RelativeToolTip": "..\\..\\SRC\\Asteroids.h",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAARAAAAAAAAAA==",
+              "DocumentMoniker": "C:\\Users\\adgz429\\OneDrive - City St George\u0027s, University of London\\Desktop\\Nafeez IN2026 Coursework Code - Invulnerability\\SRC\\Asteroids.h",
+              "RelativeDocumentMoniker": "..\\..\\..\\Nafeez IN2026 Coursework Code - Invulnerability\\SRC\\Asteroids.h",
+              "ToolTip": "C:\\Users\\adgz429\\OneDrive - City St George\u0027s, University of London\\Desktop\\Nafeez IN2026 Coursework Code - Invulnerability\\SRC\\Asteroids.h",
+              "RelativeToolTip": "..\\..\\..\\Nafeez IN2026 Coursework Code - Invulnerability\\SRC\\Asteroids.h",
+              "ViewState": "AgIAADYAAAAAAAAAAAASwEoAAAAqAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2026-04-26T07:54:45.245Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-04-26T12:33:12.373Z"
             }
           ]
         }

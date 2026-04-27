@@ -11,7 +11,7 @@
 class Player : public IGameWorldListener
 {
 public:
-	Player() { mLives = 3; }
+	Player() { mLives; }
 	virtual ~Player() {}
 
 	void OnWorldUpdated(GameWorld* world) {}
@@ -40,8 +40,16 @@ public:
 		}
 	}
 
+	void addLife() {
+		mLives += 1;
+	}
+
+	int getLife() {
+		return mLives;
+	}
+
 private:
-	int mLives;
+	int mLives = 3;
 
 	typedef std::list< shared_ptr<IPlayerListener> > PlayerListenerList;
 

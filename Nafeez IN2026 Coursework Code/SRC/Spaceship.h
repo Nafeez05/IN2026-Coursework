@@ -16,10 +16,15 @@ public:
 	virtual void Update(int t);
 	virtual void Render(void);
 
+
 	virtual void Thrust(float t);
 	virtual void Rotate(float r);
 	virtual void Shoot(void);
+	
+	void setInvulnerable(bool state);
+	bool isInvulnerable();
 
+	void brakes(float strength);
 	void SetSpaceshipShape(shared_ptr<Shape> spaceship_shape) { mSpaceshipShape = spaceship_shape; }
 	void SetThrusterShape(shared_ptr<Shape> thruster_shape) { mThrusterShape = thruster_shape; }
 	void SetBulletShape(shared_ptr<Shape> bullet_shape) { mBulletShape = bullet_shape; }
@@ -29,7 +34,7 @@ public:
 
 private:
 	float mThrust;
-
+	bool mInvulnerable = false;
 	shared_ptr<Shape> mSpaceshipShape;
 	shared_ptr<Shape> mThrusterShape;
 	shared_ptr<Shape> mBulletShape;

@@ -33,6 +33,9 @@ Spaceship::~Spaceship(void)
 
 // PUBLIC INSTANCE METHODS ////////////////////////////////////////////////////
 
+void Spaceship::brakes(float strength) {
+	mVelocity = mVelocity * (1.0f - strength);
+}
 /** Update this spaceship. */
 void Spaceship::Update(int t)
 {
@@ -51,6 +54,15 @@ void Spaceship::Render(void)
 	}
 
 	GameObject::Render();
+}
+
+//This makes the ship Invulnerable/Vulnerbale via states (like Ohio where people are invulnerable)
+void Spaceship::setInvulnerable(bool state) {
+	mInvulnerable = state;
+}
+
+bool Spaceship::isInvulnerable() {
+	return mInvulnerable;
 }
 
 /** Fire the rockets. */
@@ -94,6 +106,7 @@ void Spaceship::Shoot(void)
 
 bool Spaceship::CollisionTest(shared_ptr<GameObject> o)
 {
+	//returnign true will screen wipe everything (including self)
 	if (o->GetType() != GameObjectType("Asteroid")) return false;
 	if (mBoundingShape.get() == NULL) return false;
 	if (o->GetBoundingShape().get() == NULL) return false;
@@ -102,5 +115,8 @@ bool Spaceship::CollisionTest(shared_ptr<GameObject> o)
 
 void Spaceship::OnCollision(const GameObjectList &objects)
 {
+	if (mInvulnerable) {
+		return;
+	}
 	mWorld->FlagForRemoval(GetThisPtr());
 }

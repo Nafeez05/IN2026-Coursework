@@ -11,6 +11,7 @@
 #include "BoundingSphere.h"
 #include "GUILabel.h"
 #include "Explosion.h"
+#include "IMouseListener.h"
 #include <fstream>
 #include <algorithm>
 
@@ -70,6 +71,7 @@ void Asteroids::Start()
 	mPlayer.AddListener(thisPtr);
 
 	glutFullScreen();
+
 	// Start the game
 	GameSession::Start();
 }
@@ -82,7 +84,6 @@ void Asteroids::Stop()
 }
 
 // PUBLIC INSTANCE METHODS IMPLEMENTING IKeyboardListener /////////////////////
-
 void Asteroids::OnKeyPressed(uchar key, int x, int y)
 {
 	if (mState == GameState::MENU) {
@@ -96,7 +97,7 @@ void Asteroids::OnKeyPressed(uchar key, int x, int y)
 			mBackLabel->SetVisible(true);
 			setGuideVis();
 			setMenuInvis();
-			return;//temp: REMOVE PLEASE
+			return;
 		}
 
 		if (key == '3') {
@@ -108,7 +109,7 @@ void Asteroids::OnKeyPressed(uchar key, int x, int y)
 			mSelectedIndex = 0;
 			mScrollOffset = 0;
 			showLeaderboard();
-			return;//temp: REMOVE PLEASE
+			return;
 		}
 
 		if (key == '4') {
@@ -116,7 +117,7 @@ void Asteroids::OnKeyPressed(uchar key, int x, int y)
 			mBackLabel->SetVisible(true);
 			setMenuInvis();
 			setPowerVis();
-			return;//temp: REMOVE PLEASE
+			return;
 		}
 
 		if (key == '5') {
@@ -157,6 +158,34 @@ void Asteroids::OnKeyPressed(uchar key, int x, int y)
 			setPowerInvis();
 			mBackLabel->SetVisible(false);
 			return;
+		}
+
+		if (key == '1') {
+			mPlayer.addLife();
+			mLivesLabel->SetText("Lives: " + to_string(mPlayer.getLife()));
+			mPowerTxt1->SetText("1) Extra +1 Life [current: +" + to_string((mPlayer.getLife() - 3)) + "]");
+		}
+
+		if (key == '2') {
+			if (InvulnerabilitySelected == false) {
+				InvulnerabilitySelected = true;
+				mPowerTxt2->SetText("2) Temporary Invulnerability [v/]");
+			}
+			else {
+				InvulnerabilitySelected = false;
+				mPowerTxt2->SetText("2) Temporary Invulnerability [  ]");
+			}
+		}
+
+		if (key == '3') {
+			if (enhancedThrusterEnabled == false) {
+				enhancedThrusterEnabled =true;
+				mPowerTxt3->SetText("3) Enhanced Thrusters [v/]");
+			}
+			else {
+				enhancedThrusterEnabled = false;
+				mPowerTxt3->SetText("3) Enhanced Thrusters [  ]");
+			}
 		}
 	}
 
@@ -204,12 +233,39 @@ void Asteroids::OnSpecialKeyPressed(int key, int x, int y)
 		switch (key)
 		{
 			// If up arrow key is pressed start applying forward thrust
-		case GLUT_KEY_UP: mSpaceship->Thrust(10); break;
+		case GLUT_KEY_UP: 
+			if (enhancedThrusterEnabled == false) {
+				mSpaceship->Thrust(10);
+			}
+			else {
+				mSpaceship->Thrust(20);
+			}
+			break;
 			// If left arrow key is pressed start rotating anti-clockwise
-		case GLUT_KEY_LEFT: mSpaceship->Rotate(90); break;
+		case GLUT_KEY_LEFT: 
+			if (enhancedThrusterEnabled == false) {
+				mSpaceship->Rotate(90);
+			}
+			else {
+				mSpaceship->Rotate(180);
+			} 
+			break;
 			// If right arrow key is pressed start rotating clockwise
-		case GLUT_KEY_RIGHT: mSpaceship->Rotate(-90); break;
+		case GLUT_KEY_RIGHT: 
+			if (enhancedThrusterEnabled == false) {
+				mSpaceship->Rotate(-90);
+			}
+			else {
+				mSpaceship->Rotate(-180);
+			}
+			break;
 			// Default case - do nothing
+
+		case GLUT_KEY_DOWN:
+			if (enhancedThrusterEnabled == true) {
+				mSpaceship->brakes(0.25f);
+			}
+			break;
 		default: break;
 		}
 	}
@@ -283,10 +339,19 @@ void Asteroids::OnObjectRemoved(GameWorld* world, shared_ptr<GameObject> object)
 
 void Asteroids::OnTimer(int value)
 {
+
+	if (value == END_INVULNERABLE) {
+		mSpaceship->setInvulnerable(false);
+	}
+
 	if (value == CREATE_NEW_PLAYER)
 	{
 		mSpaceship->Reset();
 		mGameWorld->AddObject(mSpaceship);
+
+		if (mSpaceship->isInvulnerable()) {
+			mSpaceship->setInvulnerable(false);
+		}
 	}
 
 	if (value == START_NEXT_LEVEL)
@@ -361,7 +426,7 @@ void Asteroids::CreateGUI()
 	mGameDisplay->GetContainer()->AddComponent(score_component, GLVector2f(0.0f, 1.0f));
 
 	// Create a new GUILabel and wrap it up in a shared_ptr
-	mLivesLabel = make_shared<GUILabel>("Lives: 3");
+	mLivesLabel = make_shared<GUILabel>("Lives: " + to_string(mPlayer.getLife()));
 	// Set the vertical alignment of the label to GUI_VALIGN_BOTTOM
 	mLivesLabel->SetVerticalAlignment(GUIComponent::GUI_VALIGN_BOTTOM);
 	// Add the GUILabel to the GUIComponent  
@@ -402,9 +467,9 @@ void Asteroids::CreateGUI()
 
 	//This is for the power-up Menu
 	mPowerTitle = make_shared <GUILabel>("Please pick a Power-up!");
-	mPowerTxt1 = make_shared <GUILabel>("1) Extra +1 Life");
-	mPowerTxt2 = make_shared <GUILabel>("2) Temporary Invulnerability");
-	mPowerTxt3 = make_shared <GUILabel>("3) Singular Teleportation");
+	mPowerTxt1 = make_shared <GUILabel>("1) Extra +1 Life [current: +" + to_string((mPlayer.getLife() - 3)) + "]");
+	mPowerTxt2 = make_shared <GUILabel>("2) Temporary Invulnerability [  ]");
+	mPowerTxt3 = make_shared <GUILabel>("3) Enhanced Thrusters [  ]");
 	setPowerInvis();
 
 	//This is for the How to Play Segment
@@ -414,8 +479,8 @@ void Asteroids::CreateGUI()
 	mGuideTxt4 = make_shared <GUILabel>("pressed can fire a bullet from the bow of your ship capable of destoying an asteroids.");
 	mGuideTxt5 = make_shared <GUILabel>("Power-Ups...");
 	mGuideTxt6 = make_shared <GUILabel>("Extra Life = Does what it says on the tin: gives you a +1 to your livese to score points");
-	mGuideTxt7 = make_shared <GUILabel>("Invulnerability = gives you 10 seconds of invulnerability to collision with Asteroids");
-	mGuideTxt8 = make_shared <GUILabel>("Teleportation = warp to any location hovered over by your mouse.");
+	mGuideTxt7 = make_shared <GUILabel>("Invulnerability = gives you 30 seconds of invulnerability to collision with Asteroids");
+	mGuideTxt8 = make_shared <GUILabel>("Enhanced Thrusters = Allows for finer movement & higher speeds");
 	setGuideInvis();
 
 	//This is for the game_over stuff:
@@ -574,8 +639,14 @@ void Asteroids::destoryMenu() {
 
 	// Create a spaceship and add it to the world
 	mGameWorld->AddObject(CreateSpaceship());
+
 	// Create some asteroids and add them to the world
 	CreateAsteroids(10);
+
+	if (InvulnerabilitySelected == true) {
+		mSpaceship->setInvulnerable(true);
+		SetTimer(30000, END_INVULNERABLE);
+	}
 }
 
 void Asteroids::OnScoreChanged(int score)
